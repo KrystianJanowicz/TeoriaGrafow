@@ -15,25 +15,28 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
+        Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
+
+      /*  int sizeOfCircle=160;
         Circle circle1 = new Circle();
-        circle1.setCenterX(250.0f);
-        circle1.setCenterY(135.0f);
-        circle1.setRadius(100.0f);
+        circle1.setCenterX(640.0f);
+        circle1.setCenterY(240.0f);
+        circle1.setRadius(sizeOfCircle);
         circle1.setFill(Color.DARKSLATEBLUE);
 
         Circle circle2 = new Circle();
-        circle2.setCenterX(250.0f);
-        circle2.setCenterY(135.0f);
-        circle2.setRadius(99.0f);
-        circle2.setFill(Color.BLUE);
+        circle2.setCenterX(640.0f);
+        circle2.setCenterY(240.0f);
+        circle2.setRadius(sizeOfCircle-1);
+
 
 
         Shape shape = Shape.subtract(circle1, circle2);
         shape.setFill(Color.DARKSLATEBLUE);
 
-
-        Group root = new Group(shape);
-        Scene scene = new Scene(root, 1280, 720);
+*/
+       //  Group root1 = new Group(shape);
+        Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setResizable(false);
         stage.setTitle("Algorytmy grafowe");
