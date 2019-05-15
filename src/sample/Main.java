@@ -16,26 +16,6 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
 
         Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
-
-      /*  int sizeOfCircle=160;
-        Circle circle1 = new Circle();
-        circle1.setCenterX(640.0f);
-        circle1.setCenterY(240.0f);
-        circle1.setRadius(sizeOfCircle);
-        circle1.setFill(Color.DARKSLATEBLUE);
-
-        Circle circle2 = new Circle();
-        circle2.setCenterX(640.0f);
-        circle2.setCenterY(240.0f);
-        circle2.setRadius(sizeOfCircle-1);
-
-
-
-        Shape shape = Shape.subtract(circle1, circle2);
-        shape.setFill(Color.DARKSLATEBLUE);
-
-*/
-       //  Group root1 = new Group(shape);
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setResizable(false);
