@@ -39,7 +39,17 @@ public class Controller{
         }
         return bigCircleSize;
     }
-
+    
+    int getPointsQuantity(){
+        int quantity;
+        if(quantityTextField.getText().isEmpty()){
+            quantity=0;
+        }
+        else {
+            quantity = Integer.parseInt(quantityTextField.getText());
+        }
+        return quantity;
+    }
 
 
     Shape drawBigCircle(int rCircleSize){
