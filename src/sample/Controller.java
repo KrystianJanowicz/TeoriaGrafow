@@ -24,62 +24,65 @@ public class Controller{
     private SubScene subScene;
 
     @FXML
-    private TextField RCircleSizeTextField;
+    private TextField bigCircleSizeTextField;
 
-    int getRCircleSize(){
-        int RCircleSize;
-        if (RCircleSizeTextField.getText().isEmpty()) {
-            RCircleSize=0;
+    @FXML
+    private TextField quantityTextField;
+
+    int getBigCircleSize(){
+        int bigCircleSize;
+        if (bigCircleSizeTextField.getText().isEmpty()) {
+            bigCircleSize=0;
         }
         else {
-            RCircleSize = Integer.parseInt(RCircleSizeTextField.getText());
+            bigCircleSize = Integer.parseInt(bigCircleSizeTextField.getText());
         }
-        return RCircleSize;
+        return bigCircleSize;
     }
 
-    void drawBigCircle(int rCircleSize){
+
+
+    Shape drawBigCircle(int rCircleSize){
         Circle circle1 = new Circle();
         circle1.setCenterX(430);
         circle1.setCenterY(240.0f);
         circle1.setRadius(rCircleSize);
-        circle1.setFill(Color.DARKSLATEBLUE);
 
         Circle circle2 = new Circle();
         circle2.setCenterX(430.0f);
         circle2.setCenterY(240.0f);
         circle2.setRadius(rCircleSize-1);
         Shape shape = Shape.subtract(circle1, circle2);
-        shape.setFill(Color.DARKSLATEBLUE);
-        Group root = new Group();
-        root.getChildren().add(shape);
-        subScene.setRoot(root);
+        return shape;
     }
 
-    public void refresh(){
-        drawBigCircle(getRCircleSize());
-
-
-        int R=getRCircleSize();
+    Shape drawPoints(){
+        int R=getBigCircleSize();
         double a = random() * 2 * PI;
         double r = R * sqrt(random());
 
-// TO DO: TU SKOŃCZYŁEŚ, GENERUJE LOSOWE PUNKTY W KOLE, TERAZ ŻEBY DWA KOŁA NA RAZ NARYSOWAŁO
         double x = r * cos(a);
         double y = r * sin(a);
         Circle circle1 = new Circle();
         circle1.setCenterX(x+430);
         circle1.setCenterY(y+240);
         circle1.setRadius(6);
-        circle1.setFill(Color.DARKSLATEBLUE);
 
         Circle circle2 = new Circle();
         circle2.setCenterX(x+430);
         circle2.setCenterY(y+240);
         circle2.setRadius(1-1);
         Shape shape = Shape.subtract(circle1, circle2);
-        shape.setFill(Color.DARKSLATEBLUE);
+        return  shape;
+    }
+
+    public void refresh(){
+        Shape bigCircle = drawBigCircle(getBigCircleSize());
+        Shape pointsInside = drawPoints();
+        Shape unionShape = Shape.union(pointsInside, bigCircle);
         Group root = new Group();
-        root.getChildren().add(shape);
+        root.getChildren().add(unionShape);
+        unionShape.setFill(Color.RED);
         subScene.setRoot(root);
     }
 }
