@@ -1,20 +1,13 @@
 package sample;
 
-import javafx.event.ActionEvent;
+
 import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.SubScene;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
-import javafx.scene.shape.Sphere;
-
-import java.awt.*;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import static java.lang.Math.random;
 import static java.lang.StrictMath.*;
 
@@ -25,6 +18,9 @@ public class Controller{
 
     @FXML
     private TextField bigCircleSizeTextField;
+
+    @FXML
+    private TextField pointsSizeTextField;
 
     @FXML
     private TextField quantityTextField;
@@ -51,6 +47,17 @@ public class Controller{
         return quantity;
     }
 
+    int getPointsSize(){
+        int size;
+        if(pointsSizeTextField.getText().isEmpty()){
+            size=0;
+        }
+        else {
+            size = Integer.parseInt(pointsSizeTextField.getText());
+        }
+        return size;
+    }
+
 
     Shape drawBigCircle(int rCircleSize){
         Circle circle1 = new Circle();
@@ -66,30 +73,39 @@ public class Controller{
         return shape;
     }
 
-    Shape drawPoints(){
+    Shape drawPoints(Shape inputShape, int size){
+
         int R=getBigCircleSize();
+
         double a = random() * 2 * PI;
         double r = R * sqrt(random());
-
         double x = r * cos(a);
         double y = r * sin(a);
+
         Circle circle1 = new Circle();
-        circle1.setCenterX(x+430);
-        circle1.setCenterY(y+240);
-        circle1.setRadius(6);
+        circle1.setCenterX(x + 430);
+        circle1.setCenterY(y + 240);
+        circle1.setRadius(size);
 
         Circle circle2 = new Circle();
-        circle2.setCenterX(x+430);
-        circle2.setCenterY(y+240);
-        circle2.setRadius(1-1);
+        circle2.setCenterX(x + 430);
+        circle2.setCenterY(y + 240);
+        circle2.setRadius(size - 1);
         Shape shape = Shape.subtract(circle1, circle2);
-        return  shape;
+        Shape outputShape = Shape.union(inputShape, shape);
+
+        return  outputShape;
+
     }
 
     public void refresh(){
-        Shape bigCircle = drawBigCircle(getBigCircleSize());
-        Shape pointsInside = drawPoints();
-        Shape unionShape = Shape.union(pointsInside, bigCircle);
+        Shape unionShape =drawBigCircle(getBigCircleSize());
+
+
+        for(int i=0;i<getPointsQuantity();i++) {
+            unionShape = drawPoints(unionShape, getPointsSize());
+        }
+
         Group root = new Group();
         root.getChildren().add(unionShape);
         unionShape.setFill(Color.RED);

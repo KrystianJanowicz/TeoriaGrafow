@@ -12,7 +12,7 @@
   <children>
     <Button onAction="#refresh" layoutX="610.0" layoutY="651.0" mnemonicParsing="false" text="Odśwież" />
     <TextField fx:id="quantityTextField" layoutX="240.0" layoutY="517.0" prefWidth="200.0" promptText="n - ilość wierzchołków" />
-    <TextField layoutX="457.0" layoutY="517.0" prefWidth="281.0" promptText="r - promień zasięgu pojedynczego wierzchołka" />
+    <TextField fx:id="pointsSizeTextField" layoutX="457.0" layoutY="517.0" prefWidth="281.0" promptText="r - promień zasięgu pojedynczego wierzchołka" />
     <TextField fx:id="bigCircleSizeTextField" layoutX="759.0" layoutY="517.0" prefWidth="281.0" promptText="R - promień pola na którym mogą być wierzchołki" />
       <SubScene fx:id="subScene" height="400.0" layoutX="240.0" layoutY="85.0" width="800.0">
         <root>
