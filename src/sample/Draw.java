@@ -10,7 +10,7 @@ public class Draw {
 
    public static Shape bigCircle(int rCircleSize){
         Circle circle1 = new Circle();
-        circle1.setCenterX(430);
+        circle1.setCenterX(430.0f);
         circle1.setCenterY(240.0f);
         circle1.setRadius(rCircleSize);
 
@@ -53,7 +53,7 @@ public class Draw {
         System.out.println("wartosc array[j][1]:"+array[j][1] + " j: " + j);
         line.setStartY(array[i][1]+240);
         line.setEndX(array[j][0]+430);
-        line.setEndY(array[j][0]+240);
+        line.setEndY(array[j][1]+240);
 
         root.getChildren().add(line);
     }
