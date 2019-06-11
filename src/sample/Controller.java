@@ -28,15 +28,14 @@ public class Controller{
     void markCollisions(double array[][], int quantity, int size, Group root) {
         System.out.println("--------------------------------------");
         double dis;
+
         for (int j = 1; j != quantity; j++) {
-            System.out.println("j: " + j);
             for (int i = 0; i != quantity; i++) {
-                System.out.println("i: " + i);
 
                 if (i==j)
                     continue;
 
-       dis = Point2D.distance(array[i][0], array[i][1], array[j][0], array[j][1]);
+                  dis = Point2D.distance(array[i][0], array[i][1], array[j][0], array[j][1]);
 
 
                 System.out.println("dystans: "+ dis);
@@ -61,13 +60,11 @@ public class Controller{
             double x = r * cos(a);
             double y = r * sin(a);
 
-           // System.out.println("x:" + x + "y:" +y);
             //flaga czy koliduje czy nie w tablicy, najpierw sprawdzenie kolizji potem rysowanie
             array[i][0]=x;
             array[i][1]=y;
 
         }
-
             markCollisions(array, quantity, GetInfoAbout.smallCirclesSize(smallCirclesSizeTextField), root);
 
 

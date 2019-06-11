@@ -33,7 +33,13 @@ public class Draw {
         circle2.setCenterY(y + 240);
         circle2.setRadius(size - 1);
 
+        Circle circle3 = new Circle();
+        circle3.setCenterX(x + 430);
+        circle3.setCenterY(y + 240);
+        circle3.setRadius(2);
+
         Shape shape = Shape.subtract(circle1, circle2);
+        shape = Shape.union(shape, circle3);
         shape.setFill(Color.GREEN);
         root.getChildren().add(shape);
     }
@@ -41,7 +47,10 @@ public class Draw {
     public static void drawLine(Group root, double[][] array, int i, int j){
         Line line = new Line();
         line.setStartX(array[i][0]+430);
-        System.out.println(array[i][0]);
+        System.out.println("wartosc array[i][0]:"+array[i][0] + " i: " + i);
+        System.out.println("wartosc array[j][0]:"+array[j][0] + " j: " + j);
+        System.out.println("wartosc array[i][1]:"+array[i][1] + " i: " + i);
+        System.out.println("wartosc array[j][1]:"+array[j][1] + " j: " + j);
         line.setStartY(array[i][1]+240);
         line.setEndX(array[j][0]+430);
         line.setEndY(array[j][0]+240);
