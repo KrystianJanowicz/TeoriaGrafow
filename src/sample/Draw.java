@@ -41,7 +41,6 @@ public class Draw {
         Shape shape = Shape.subtract(circle1, circle2);
         shape = Shape.union(shape, circle3);
         if(array[i][2]==0){
-
             shape.setFill(Color.GREEN);
         }
         else if (array[i][2]==1){
